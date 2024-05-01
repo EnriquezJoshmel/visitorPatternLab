@@ -1,21 +1,34 @@
 package visitorPatternLab;
 
-public class FlatRateShippingVisitor implements ShippingCostVisitor {
+public class Chair implements Furniture {
 
-    private final double baseCost = 10;
+    private final String name;
+    private final double size;
 
-    @Override
-    public double visit(Chair chair, double distance) {
-        return baseCost;
+    public Chair(String name, double size) {
+        this.name = name;
+        this.size = size;
     }
 
     @Override
-    public double visit(Table table, double distance) {
-        return baseCost;
+    public String getName() {
+        return name;
     }
 
     @Override
-    public double visit(Sofa sofa, double distance) {
-        throw new UnsupportedOperationException("Flat rate not applicable for Sofa");
+    public String getType() {
+        return "Chair";
+    }
+
+    @Override
+    public double getSize() {
+        return size;
+    }
+
+    @Override
+    public double accept(ShippingCostVisitor visitor, double distance) {
+        return visitor.visit1(this, distance);
     }
 }
+
+
