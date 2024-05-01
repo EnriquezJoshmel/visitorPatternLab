@@ -30,7 +30,7 @@ public class Sofa implements Furniture {
         if (this.getType().equals("Sofa")) {
             // Call SofaShippingVisitor
         } else {
-            return visitor.visit(this, distance);
+            return visitor.visit3(this, distance);
         }
         return distance;
     }
